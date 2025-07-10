@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Shinhan Bank - eKYC Xác thực</title>
+    <link rel="icon" href="https://shinhan.com.vn/public/themes/shinhan/img/favicon2023.ico"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #00468E;
+            --accent-color: #00A859;
+            --background-color: #f4f7fe;
+            --card-bg-color: #FFFFFF;
+            --text-primary: #34404E;
+            --text-secondary: #76818E;
+            --border-color: #E9EDF4;
+            --container-width: 550px;
+            --border-radius: 12px;
+            --transition: all 0.3s ease-in-out;
+        }
+
+        html { box-sizing: border-box; }
+        *, *:before, *:after { box-sizing: inherit; }
+
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background: var(--background-color);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        .hidden { display: none !important; }
+
+        .main-container {
+            width: 100%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+            background-color: var(--card-bg-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .top-header .logo { height: 30px; }
+        .top-header .hotline { font-weight: 600; color: var(--primary-color); }
+        .top-header .hotline i { margin-right: 8px; }
+
+        .stepper {
+            padding: 16px 24px;
+            background-color: #E9EDF4;
+            text-align: center;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .content-wrapper {
+            background: var(--card-bg-color);
+            padding: 32px;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        /* Document Selection */
+        .doc-options { display: flex; flex-direction: column; }
+        .doc-option {
+            display: flex; align-items: center; gap: 16px;
+            padding: 16px; border-bottom: 1px solid var(--border-color);
+            cursor: pointer; transition: background-color 0.2s;
+        }
+        .doc-option:last-child { border-bottom: none; }
+        .doc-option:hover { background-color: #F8F9FA; }
+        .doc-icon { width: 48px; height: auto; }
+        .doc-label { flex-grow: 1; text-align: left; font-weight: 600; font-size: 1.1rem; }
+        .chevron { font-size: 1rem; color: #ADB5BD; }
+
+        /* Capture Screen */
+        .camera-container {
+            position: relative; background: #000;
+            border-radius: var(--border-radius); overflow: hidden;
+            margin: 16px auto; width: 100%;
+            border: 2px solid var(--border-color);
+        }
+        .camera-container video { display: block; width: 100%; height: auto; }
+        
+        .id-capture-frame { max-width: 480px; aspect-ratio: 85.6 / 53.98; }
+        
+        .face-capture-frame {
+            width: 280px; height: 280px;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.5);
+            transition: border-color 0.5s;
+            position: relative;
+        }
+        .face-capture-frame.ready { border-color: var(--accent-color); }
+        .scan-line {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+            box-shadow: 0 0 10px var(--accent-color);
+            border-radius: 2px;
+            animation: scan 3s infinite linear;
+            display: none;
+        }
+        .face-capture-frame.ready .scan-line { display: block; }
+
+        @keyframes scan {
+            0% { top: 10%; }
+            50% { top: 90%; }
+            100% { top: 10%; }
+        }
+
+        .capture-instruction { text-align: center; margin-top: 20px; font-weight: 500; min-height: 24px;}
+        .guide-link {
+            display: block;
+            text-align: center;
+            margin-top: 16px;
+            color: var(--primary-color);
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .guide-link:hover { text-decoration: underline; }
+        
+        /* Confirmation Screen */
+        .confirmation-grid {
+            display: grid; grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px; margin-bottom: 24px; text-align: center;
+        }
+        .confirm-item img {
+            width: 100%; aspect-ratio: 1.5 / 1;
+            object-fit: cover; border-radius: 8px;
+            border: 1px solid var(--border-color); margin-bottom: 8px;
+        }
+        .confirm-item .label { font-weight: 500; font-size: 0.9rem; color: var(--text-secondary); }
+        .info-card {
+            background: var(--background-color); border-radius: 8px; padding: 16px;
+        }
+        .info-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #E0E0E0; }
+        .info-row:last-child { border-bottom: none; }
+        .info-label { font-weight: 500; color: var(--text-secondary); }
+        .info-value { font-weight: 700; }
+
+        /* Common Button Styles */
+        .action-buttons {
+            display: flex; flex-direction: column; justify-content: center;
+            gap: 16px; margin-top: 32px;
+        }
+        .btn-custom {
+            padding: 14px 32px; border-radius: 8px;
+            font-weight: 700; font-size: 1.1rem; border: none;
+            transition: var(--transition);
+        }
+        .btn-main {
+            background: linear-gradient(90deg, #00B460 0%, #00934C 100%);
+            color: #FFFFFF;
+            box-shadow: 0 4px 10px rgba(0, 168, 89, 0.3);
+        }
+        .btn-main:disabled {
+            background: #BDBDBD; cursor: not-allowed; box-shadow: none;
+        }
+        .btn-main:hover:not(:disabled) {
+            background: linear-gradient(90deg, #00a859 0%, #008748 100%);
+        }
+        .btn-secondary-custom { background: #E9EDF4; color: var(--text-primary); }
+        .btn-secondary-custom:hover { background: #DDE1E7; }
+        
+        /* Modal */
+        .modal-overlay {
+            position: fixed; inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            display: flex; align-items: center; justify-content: center;
+            animation: fadeIn 0.3s;
+            padding: 16px;
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .modal-content {
+            background: var(--card-bg-color); padding: 24px; border-radius: var(--border-radius);
+            max-width: 90%; width: 500px; text-align: center;
+            position: relative;
+        }
+        .modal-content video { max-width: 100%; border-radius: 8px; margin-bottom: 24px; }
+        .modal-close-btn {
+            position: absolute; top: 10px; right: 10px;
+            background: #e9ecef; border: none;
+            width: 32px; height: 32px; border-radius: 50%;
+            font-size: 1.2rem; cursor: pointer;
+        }
+
+        /* Guide Modal Specifics */
+        .guide-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 16px;
+        }
+        .guide-item img {
+            width: 100%;
+            border-radius: 8px;
+            border: 2px solid var(--border-color);
+        }
+        .guide-item p {
+            font-weight: 600;
+            margin-top: 8px;
+        }
+        .guide-item .ok { color: var(--accent-color); }
+        .guide-item .error { color: var(--error-color); }
+        
+        /* Loading Overlay */
+        .loading-overlay {
+            position: fixed; inset: 0;
+            background: rgba(255, 255, 255, 0.9);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            gap: 20px; z-index: 9999; color: var(--primary-color);
+        }
+        .spinner {
+            width: 60px; height: 60px;
+            border: 6px solid rgba(0, 70, 142, 0.2);
+            border-top-color: var(--primary-color);
+            border-radius: 50%; animation: spin 1s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <header class="top-header">
+            <img class="logo" src="https://vaytieudung.github.io/shinhanbank/dist/configs/logo.png" alt="Shinhan Bank Logo">
+            <div class="hotline">
+                <i class="fas fa-phone-alt"></i>
+                <span>Hotline: 1900 1577</span>
+            </div>
+        </header>
+
+        <div id="stepper" class="stepper">Bước 1/4: Chọn loại giấy tờ</div>
+
+        <main id="viewContainer" class="content-wrapper">
+            <!-- Screen 1: Document Selection -->
+            <div id="docSelectView">
+                <h2 class="section-title">Xác thực giấy tờ</h2>
+                <p class="section-subtitle">Để xác thực thông tin, Quý khách vui lòng lựa chọn một trong các loại giấy tờ sau:</p>
+                <div class="doc-options">
+                    <div class="doc-option" data-type="cccd">
+                        <img class="doc-icon" src="https://vaytieudung.github.io/shinhanbank/lib/icon_id.png" alt="ID Card Icon">
+                        <div class="doc-label">Thẻ Căn cước / CMND</div>
+                        <div class="chevron"><i class="fa fa-chevron-right"></i></div>
+                    </div>
+                    <div class="doc-option" data-type="passport">
+                        <img class="doc-icon" src="https://vaytieudung.github.io/shinhanbank/lib/icon_passport.png" alt="Passport Icon">
+                        <div class="doc-label">Hộ chiếu</div>
+                        <div class="chevron"><i class="fa fa-chevron-right"></i></div>
+                    </div>
+                    <div class="doc-option" data-type="driver">
+                        <img class="doc-icon" src="https://vaytieudung.github.io/shinhanbank/lib/icon_driver_license.png" alt="Driver License Icon">
+                        <div class="doc-label">Bằng lái xe</div>
+                        <div class="chevron"><i class="fa fa-chevron-right"></i></div>
+                    </div>
+                    <div class="doc-option" data-type="other">
+                        <img class="doc-icon" src="https://vaytieudung.github.io/shinhanbank/lib/icon_other.png" alt="Other Documents Icon">
+                        <div class="doc-label">Giấy tờ khác</div>
+                        <div class="chevron"><i class="fa fa-chevron-right"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 2: Capture Steps -->
+            <div id="captureView" class="hidden">
+                 <h2 class="section-title" id="captureTitle"></h2>
+                 <p class="section-subtitle" id="captureSubtitle"></p>
+                 <div class="camera-container" id="cameraFrame">
+                    <div class="scan-line"></div>
+                    <video id="cameraVideo" autoplay playsinline muted></video>
+                    <canvas id="faceApiCanvas" style="position: absolute; top: 0; left: 0;"></canvas>
+                 </div>
+                 <p id="captureInstruction" class="capture-instruction"></p>
+                 <a id="guideLink" class="guide-link">Xem hướng dẫn</a>
+                 <div class="action-buttons">
+                    <button id="btnCapture" class="btn-custom btn-main"><i class="fas fa-camera"></i> Chụp Ảnh</button>
+                 </div>
+            </div>
+            
+            <!-- Screen 3: Confirmation -->
+            <div id="confirmView" class="hidden">
+                <h2 class="section-title">Xác nhận thông tin</h2>
+                <p class="section-subtitle">Vui lòng kiểm tra lại hình ảnh và thông tin đã được nhận dạng.</p>
+                <div class="confirmation-grid">
+                    <div class="confirm-item">
+                        <img id="confirmFrontImg" alt="Ảnh mặt trước">
+                        <div class="label">Mặt trước</div>
+                        <button class="btn-custom btn-secondary-custom mt-2" data-retake="front">Chụp lại</button>
+                    </div>
+                    <div class="confirm-item">
+                        <img id="confirmBackImg" alt="Ảnh mặt sau">
+                        <div class="label">Mặt sau</div>
+                        <button class="btn-custom btn-secondary-custom mt-2" data-retake="back">Chụp lại</button>
+                    </div>
+                    <div class="confirm-item">
+                        <img id="confirmFaceImg" alt="Ảnh chân dung">
+                        <div class="label">Chân dung</div>
+                        <button class="btn-custom btn-secondary-custom mt-2" data-retake="face">Chụp lại</button>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="info-row">
+                        <span class="info-label">Số giấy tờ:</span>
+                        <span id="infoIdNumber" class="info-value">Đang xử lý...</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Họ và tên:</span>
+                        <span id="infoFullName" class="info-value">Đang xử lý...</span>
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <button id="btnConfirm" class="btn-custom btn-main">Xác nhận & Hoàn tất</button>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Video Tutorial Modal -->
+    <div id="videoModal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h2 class="section-title">Hướng dẫn chụp ảnh chân dung</h2>
+            <p class="section-subtitle">Xem video để đảm bảo ảnh có chất lượng tốt nhất</p>
+            <video id="tutorialVideo" controls>
+                <source src="https://vaytieudung.github.io/shinhanbank/lib/vietnamese-tutorial.mp4" type="video/mp4">
+            </video>
+            <button id="btnStartFaceCapture" class="btn-custom btn-main">Bắt đầu chụp</button>
+        </div>
+    </div>
+
+    <!-- Guide Modal -->
+    <div id="guideModal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button id="guideModalClose" class="modal-close-btn">&times;</button>
+            <h2 class="section-title">Hướng dẫn chụp ảnh</h2>
+            <div class="guide-grid">
+                <div class="guide-item">
+                    <img src="https://vaytieudung.github.io/shinhanbank/web-sdk-version-3.2.0.0/dist/assets/sample_ok.png" alt="Ảnh hợp lệ">
+                    <p class="ok">Hợp lệ</p>
+                </div>
+                <div class="guide-item">
+                    <img src="https://vaytieudung.github.io/shinhanbank/lib/mo.png" alt="Ảnh bị mờ">
+                    <p class="error">Ảnh mờ</p>
+                </div>
+                 <div class="guide-item">
+                    <img src="https://vaytieudung.github.io/shinhanbank/lib/loasang.png" alt="Ảnh bị lóa">
+                    <p class="error">Ảnh lóa</p>
+                </div>
+                 <div class="guide-item">
+                    <img src="https://vaytieudung.github.io/shinhanbank/lib/matgoc.png" alt="Ảnh mất góc">
+                    <p class="error">Ảnh mất góc</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay hidden">
+        <div class="spinner"></div>
+        <p id="loadingText" style="font-weight: 600; font-size: 1.1rem;"></p>
+    </div>
+
+    <!-- Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.0/dist/tesseract.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const $ = (selector) => document.querySelector(selector);
+            const $$ = (selector) => document.querySelectorAll(selector);
+
+            const views = {
+                docSelect: $('#docSelectView'),
+                capture: $('#captureView'),
+                confirm: $('#confirmView')
+            };
+            const stepper = $('#stepper');
+            
+            const showView = (viewName) => {
+                Object.values(views).forEach(v => v.classList.add('hidden'));
+                if (views[viewName]) views[viewName].classList.remove('hidden');
+            };
+
+            const updateStepper = (text) => {
+                stepper.textContent = text;
+            };
+
+            const loadingOverlay = $('#loadingOverlay'), loadingText = $('#loadingText');
+            const showLoading = (show = true, text = 'Đang xử lý...') => {
+                loadingText.textContent = text;
+                loadingOverlay.classList.toggle('hidden', !show);
+            };
+
+            const videoModal = $('#videoModal');
+            const guideModal = $('#guideModal');
+
+            const captureTitle = $('#captureTitle'), captureSubtitle = $('#captureSubtitle');
+            const cameraFrame = $('#cameraFrame'), cameraVideo = $('#cameraVideo');
+            const captureInstruction = $('#captureInstruction');
+            const btnCapture = $('#btnCapture');
+            const guideLink = $('#guideLink');
+            
+            const btnConfirm = $('#btnConfirm');
+
+            const state = {
+                docType: null,
+                captureStage: 'front',
+                images: { front: null, back: null, face: null },
+                ocrResult: { idNumber: '', fullName: '' },
+                stream: null,
+                faceApiInterval: null,
+                tesseractWorker: null,
+            };
+
+            const initFaceAPI = async () => {
+                showLoading(true, 'Đang tải mô hình AI...');
+                const MODEL_URL = 'https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/weights';
+                try {
+                    await Promise.all([
+                        faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL),
+                        faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL),
+                    ]);
+                } catch (error) {
+                    console.error("Failed to load FaceAPI models:", error);
+                    alert("Đã xảy ra lỗi khi tải mô hình AI. Vui lòng thử lại sau.");
+                } finally {
+                    showLoading(false);
+                }
+            };
+
+            const initTesseract = async () => {
+                state.tesseractWorker = await Tesseract.createWorker('vie');
+            };
+            
+            const stopStream = () => {
+                if (state.stream) state.stream.getTracks().forEach(track => track.stop());
+                clearInterval(state.faceApiInterval);
+                state.stream = null;
+            };
+
+            const startCamera = async (isFrontFacing = false) => {
+                stopStream();
+                try {
+                    const constraints = { video: { facingMode: isFrontFacing ? 'user' : 'environment', width: { ideal: 1280 }, height: { ideal: 720 } } };
+                    state.stream = await navigator.mediaDevices.getUserMedia(constraints);
+                    cameraVideo.srcObject = state.stream;
+                    await cameraVideo.play();
+                } catch (err) {
+                    console.error("Camera Error:", err);
+                    alert('Lỗi: Không thể truy cập camera. Vui lòng kiểm tra và cấp quyền truy cập.');
+                }
+            };
+            
+            const setupCaptureStage = async (stage) => {
+                state.captureStage = stage;
+                btnCapture.disabled = false;
+                cameraFrame.classList.remove('ready');
+
+                const stageConfig = {
+                    'front': { step: "2/4", title: 'Chụp mặt trước', subtitle: 'Vui lòng đặt mặt trước của giấy tờ vào trong khung hình và nhấn nút chụp.', isFace: false, instruction: 'Đảm bảo ảnh rõ nét, không bị lóa sáng và mất góc.' },
+                    'back':  { step: "2/4", title: 'Chụp mặt sau', subtitle: 'Vui lòng đặt mặt sau của giấy tờ vào trong khung hình và nhấn nút chụp.', isFace: false, instruction: 'Giữ điện thoại ổn định để có ảnh chụp tốt nhất.' },
+                    'face':  { step: "3/4", title: 'Xác thực khuôn mặt', subtitle: 'Vui lòng giữ khuôn mặt của bạn nằm trong khung hình oval.', isFace: true, instruction: 'Giữ yên và nhìn thẳng vào camera.' }
+                };
+                
+                const config = stageConfig[stage];
+                if (!config) return;
+
+                updateStepper(`Bước ${config.step}: ${config.title}`);
+                captureTitle.textContent = config.title;
+                captureSubtitle.textContent = config.subtitle;
+                captureInstruction.textContent = config.instruction;
+                cameraFrame.className = `camera-container ${config.isFace ? 'face-capture-frame' : 'id-capture-frame'}`;
+                guideLink.classList.toggle('hidden', config.isFace);
+                
+                await startCamera(config.isFace);
+
+                if (config.isFace) {
+                    btnCapture.disabled = true;
+                    startFaceDetection();
+                }
+            };
+
+            const startFaceDetection = () => {
+                state.faceApiInterval = setInterval(async () => {
+                    if (cameraVideo.readyState < 3) return;
+                    const detections = await faceapi.detectSingleFace(cameraVideo, new faceapi.TinyFaceDetectorOptions());
+                    
+                    if (detections) {
+                        cameraFrame.classList.add('ready');
+                        btnCapture.disabled = false;
+                        captureInstruction.textContent = "Khuôn mặt hợp lệ. Sẵn sàng để chụp!";
+                    } else {
+                        cameraFrame.classList.remove('ready');
+                        btnCapture.disabled = true;
+                        captureInstruction.textContent = "Không tìm thấy khuôn mặt trong khung hình.";
+                    }
+                }, 500);
+            };
+
+            const captureCurrentImage = () => {
+                const canvas = document.createElement('canvas');
+                canvas.width = cameraVideo.videoWidth;
+                canvas.height = cameraVideo.videoHeight;
+                canvas.getContext('2d').drawImage(cameraVideo, 0, 0);
+                return canvas.toDataURL('image/jpeg', 0.9);
+            };
+
+            const runOCR = async (image) => {
+                showLoading(true, "Đang nhận dạng ký tự...");
+                try {
+                    const { data: { text } } = await state.tesseractWorker.recognize(image);
+                    const idMatch = text.match(/\b\d{9,12}\b/g);
+                    const nameMatch = text.match(/(?:Họ và tên|Họ tên)\s*[:\s]*\n*([A-ZÀ-Ỹ\s]+)/) || text.match(/([A-ZÀ-Ỹ]{2,}(?:\s[A-ZÀ-Ỹ]{2,})+)/);
+                    state.ocrResult.idNumber = idMatch ? idMatch[0] : 'Không nhận dạng được';
+                    state.ocrResult.fullName = nameMatch ? (nameMatch[1] || nameMatch[0]).trim().replace(/\n/g, ' ') : 'Không nhận dạng được';
+                } catch(e) {
+                    console.error("OCR Error:", e);
+                    state.ocrResult.idNumber = 'Lỗi nhận dạng';
+                    state.ocrResult.fullName = 'Lỗi nhận dạng';
+                }
+            };
+
+            const processCapture = async () => {
+                btnCapture.disabled = true;
+                const image = captureCurrentImage();
+                state.images[state.captureStage] = image;
+                stopStream();
+                
+                if (state.captureStage === 'front') {
+                    await runOCR(image);
+                    showLoading(false);
+                    setupCaptureStage('back');
+                } else if (state.captureStage === 'back') {
+                    videoModal.classList.remove('hidden');
+                } else if (state.captureStage === 'face') {
+                    showLoading(true, "Đang hoàn tất...");
+                    setTimeout(() => {
+                        showView('confirm');
+                        updateStepper('Bước 4/4: Xác nhận thông tin');
+                        $('#confirmFrontImg').src = state.images.front;
+                        $('#confirmBackImg').src = state.images.back;
+                        $('#confirmFaceImg').src = state.images.face;
+                        $('#infoIdNumber').textContent = state.ocrResult.idNumber;
+                        $('#infoFullName').textContent = state.ocrResult.fullName;
+                        showLoading(false);
+                    }, 2000);
+                }
+            };
+            
+            // --- Event Listeners ---
+            $$('#docSelectView .doc-option').forEach(option => {
+                option.addEventListener('click', () => {
+                    state.docType = option.dataset.type;
+                    showView('capture');
+                    setupCaptureStage('front');
+                });
+            });
+
+            btnCapture.addEventListener('click', processCapture);
+            
+            $('#btnStartFaceCapture').addEventListener('click', () => {
+                videoModal.classList.add('hidden');
+                setupCaptureStage('face');
+            });
+            
+            $$('#confirmView button[data-retake]').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const stageToRetake = e.target.dataset.retake;
+                    showView('capture');
+                    setupCaptureStage(stageToRetake);
+                });
+            });
+
+            btnConfirm.addEventListener('click', () => {
+                alert('Xác thực thành công! Cảm ơn bạn đã sử dụng dịch vụ của Shinhan Bank.');
+                location.reload();
+            });
+
+            guideLink.addEventListener('click', () => guideModal.classList.remove('hidden'));
+            $('#guideModalClose').addEventListener('click', () => guideModal.classList.add('hidden'));
+            
+            // --- Initialization ---
+            const initialize = async () => {
+                await Promise.all([initFaceAPI(), initTesseract()]);
+                showView('docSelect');
+            };
+
+            initialize();
+        });
+    </script>
+</body>
+</html>
