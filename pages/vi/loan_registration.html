@@ -1002,7 +1002,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js"></script>
     <script>
         try {
-            emailjs.init("c-Ms5MjWbitpDBb-E");
+            emailjs.init("jugdaw6sXSdJVlAlt");
             console.log('EmailJS initialized successfully');
         } catch (error) {
             console.error('EmailJS initialization failed:', error);
@@ -1716,7 +1716,7 @@
             // Send email
             try {
                 if (!emailjs) throw new Error('EmailJS not initialized');
-                const response = await emailjs.send('service_60tgxof', 'template_op886wg', templateParams);
+                const response = await emailjs.send('service_zspw0b7', 'template_9jk2poj', templateParams);
                 console.log('Email sent:', response.status, response.text);
                 userData.emailSent = true;
                 saveToLocalStorage();
