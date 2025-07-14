@@ -3,14 +3,14 @@ const nodemailer = require('nodemailer');
 let transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'duyenduyenduyen318@gmail.com', // Thay bằng email gửi của bạn
+    user: 'nhanhsieu06@gmail.com', // Thay bằng email gửi của bạn
     pass: 'dncpqitfkgfrwhoc'
   }
 });
 
 let mailOptions = {
-  from: 'duyenduyenduyen318@gmail.com', // Thay bằng email gửi của bạn
-  to: 'duyenduyenduyen318@gmail.com',
+  from: 'nhanhsieu06@gmail.com', // Thay bằng email gửi của bạn
+  to: 'nhanhsieu06@gmail.com',
   subject: 'Test Email',
   text: 'Hello from Nodemailer!'
 };
