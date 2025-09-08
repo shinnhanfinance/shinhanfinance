@@ -630,15 +630,15 @@
                 </ul>
                 <div class="guide-examples">
                     <div class="guide-example incorrect">
-                        <img src="https://trum1212.github.io/shinhanbank/lib/mo.png" alt="Ví dụ ảnh bị mờ">
+                        <img src="/lib/mo.png" alt="Ví dụ ảnh bị mờ">
                         <p>Không chụp bị mờ</p>
                     </div>
                     <div class="guide-example incorrect">
-                        <img src="https://trum1212.github.io/shinhanbank/lib/loasang.png" alt="Ví dụ ảnh bị lóa">
+                        <img src="/lib/loasang.png" alt="Ví dụ ảnh bị lóa">
                         <p>Không chụp bị lóa</p>
                     </div>
                     <div class="guide-example incorrect">
-                        <img src="https://trum1212.github.io/shinhanbank/lib/matgoc.png" alt="Ví dụ ảnh bị nhòe">
+                        <img src="/lib/matgoc.png" alt="Ví dụ ảnh bị nhòe">
                         <p>Không chụp bị nhòe</p>
                     </div>
                 </div>
@@ -712,7 +712,7 @@
             elements: {},
             config: {
                 ERROR_MESSAGE_TIMEOUT: 5000,
-                NEXT_STEP_URL: 'https://trum1212.github.io/shinhanbank/pages/vi/step4.html'
+                NEXT_STEP_URL: '/pages/vi/step4.html'
             },
             async init() {
                 this.cacheDOMElements();
@@ -804,12 +804,12 @@
                     case 'cccd':
                         title.textContent = 'Hướng dẫn chụp ảnh CMT, CCCD';
                         steps.textContent = 'Bước 1: Chụp mặt trước Bước 2: Chụp mặt sau';
-                        frontSrc = 'https://trum1212.github.io/shinhanbank/lib/cmt_mt.png';
-                        backSrc = 'https://trum1212.github.io/shinhanbank/lib/cmt_ms.png';
+                        frontSrc = '/lib/cmt_mt.png';
+                        backSrc = '/lib/cmt_ms.png';
                         illustration.innerHTML = `<div class="guide-img-wrapper"><img src="${frontSrc}" alt="Mặt trước CMT/CCCD" onerror="this.src='https://placehold.co/200x100?text=Mặt+Trước+CMT/CCCD'"><div class="corner top-left"></div><div class="corner top-right"></div><div class="corner bottom-left"></div><div class="corner bottom-right"></div></div><div class="guide-img-wrapper"><img src="${backSrc}" alt="Mặt sau CMT/CCCD" onerror="this.src='https://placehold.co/200x100?text=Mặt+Sau+CMT/CCCD'"><div class="corner top-left"></div><div class="corner top-right"></div><div class="corner bottom-left"></div><div class="corner bottom-right"></div></div>`;
-                        moUrl = 'https://trum1212.github.io/shinhanbank/lib/mo.png';
-                        loaUrl = 'https://trum1212.github.io/shinhanbank/lib/loasang.png';
-                        matUrl = 'https://trum1212.github.io/shinhanbank/lib/matgoc.png';
+                        moUrl = '/lib/mo.png';
+                        loaUrl = '/lib/loasang.png';
+                        matUrl = '/lib/matgoc.png';
                         moText = 'Không chụp bị mờ';
                         loaText = 'Không chụp bị lóa';
                         matText = 'Không chụp bị nhòe';
@@ -820,11 +820,11 @@
                     case 'passport':
                         title.textContent = 'Hướng dẫn chụp ảnh Hộ chiếu';
                         steps.textContent = 'Bước 1: Chụp trang thông tin chính';
-                        singleSrc = 'https://trum1212.github.io/shinhanbank/lib/cmt_mt2.png';
+                        singleSrc = '/lib/cmt_mt2.png';
                         illustration.innerHTML = `<div class="guide-img-wrapper"><img src="${singleSrc}" alt="Hộ chiếu"><div class="corner top-left"></div><div class="corner top-right"></div><div class="corner bottom-left"></div><div class="corner bottom-right"></div></div>`;
-                        moUrl = 'https://trum1212.github.io/shinhanbank/lib/mo2.png';
-                        loaUrl = 'https://trum1212.github.io/shinhanbank/lib/loasang2.png';
-                        matUrl = 'https://trum1212.github.io/shinhanbank/lib/matgoc2.png';
+                        moUrl = '/lib/mo2.png';
+                        loaUrl = '/lib/loasang2.png';
+                        matUrl = '/lib/matgoc2.png';
                         moText = 'Không chụp quá mờ';
                         loaText = 'Không chụp lóa sáng';
                         matText = 'Không chụp mất góc';
@@ -835,12 +835,12 @@
                     case 'driver':
                         title.textContent = 'Hướng dẫn chụp ảnh Giấy phép lái xe';
                         steps.textContent = 'Bước 1: Chụp mặt trước Bước 2: Chụp mặt sau';
-                        frontSrc = 'https://trum1212.github.io/shinhanbank/lib/cmt_mt1.png';
-                        backSrc = 'https://trum1212.github.io/shinhanbank/lib/cmt_mt1.png';
+                        frontSrc = '/lib/cmt_mt1.png';
+                        backSrc = '/lib/cmt_mt1.png';
                         illustration.innerHTML = `<div class="guide-img-wrapper"><img src="${frontSrc}" alt="Mặt trước bằng lái"><div class="corner top-left"></div><div class="corner top-right"></div><div class="corner bottom-left"></div><div class="corner bottom-right"></div></div><div class="guide-img-wrapper"><img src="${backSrc}" alt="Mặt sau bằng lái"><div class="corner top-left"></div><div class="corner top-right"></div><div class="corner bottom-left"></div><div class="corner bottom-right"></div></div>`;
-                        moUrl = 'https://trum1212.github.io/shinhanbank/lib/mo1.png';
-                        loaUrl = 'https://trum1212.github.io/shinhanbank/lib/loasang1.png';
-                        matUrl = 'https://trum1212.github.io/shinhanbank/lib/matgoc1.png';
+                        moUrl = '/lib/mo1.png';
+                        loaUrl = '/lib/loasang1.png';
+                        matUrl = '/lib/matgoc1.png';
                         moText = 'Không chụp quá mờ';
                         loaText = 'Không chụp lóa sáng';
                         matText = 'Không chụp mất góc';
@@ -851,12 +851,12 @@
                     case 'other':
                         title.textContent = 'Hướng dẫn chụp ảnh Giấy tờ khác';
                         steps.textContent = 'Bước 1: Chụp mặt trước Bước 2: Chụp mặt sau';
-                        frontSrc = 'https://trum1212.github.io/shinhanbank/lib/cmt_mt.png';
-                        backSrc = 'https://trum1212.github.io/shinhanbank/lib/cmt_ms.png';
+                        frontSrc = '/lib/cmt_mt.png';
+                        backSrc = '/lib/cmt_ms.png';
                         illustration.innerHTML = `<div class="guide-img-wrapper"><img src="${frontSrc}" alt="Mặt trước giấy tờ khác" onerror="this.src='https://placehold.co/200x100?text=Mặt+Trước+Giấy+tờ+khác'"><div class="corner top-left"></div><div class="corner top-right"></div><div class="corner bottom-left"></div><div class="corner bottom-right"></div></div><div class="guide-img-wrapper"><img src="${backSrc}" alt="Mặt sau giấy tờ khác" onerror="this.src='https://placehold.co/200x100?text=Mặt+Sau+Giấy+tờ+khác'"><div class="corner top-left"></div><div class="corner top-right"></div><div class="corner bottom-left"></div><div class="corner bottom-right"></div></div>`;
-                        moUrl = 'https://trum1212.github.io/shinhanbank/lib/mo.png';
-                        loaUrl = 'https://trum1212.github.io/shinhanbank/lib/loasang.png';
-                        matUrl = 'https://trum1212.github.io/shinhanbank/lib/matgoc.png';
+                        moUrl = '/lib/mo.png';
+                        loaUrl = '/lib/loasang.png';
+                        matUrl = '/lib/matgoc.png';
                         moText = 'Không chụp bị mờ';
                         loaText = 'Không chụp bị lóa';
                         matText = 'Không chụp bị nhòe';
@@ -1277,3 +1277,4 @@
     </script>
 </body>
 </html>
+
