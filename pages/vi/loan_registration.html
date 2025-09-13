@@ -434,6 +434,28 @@
             display: none;
             margin-left: 8px;
         }
+        .auto-save-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        .auto-save-indicator.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .auto-save-indicator.success {
+            background: var(--accent-color);
+        }
     </style>
 </head>
 <body>
@@ -445,7 +467,7 @@
                 <i class="bi bi-list" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Menu"></i>
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li><a class="dropdown-item" href="/pages/vi/loan_registration.html">ĐĂNG KÝ TRỰC TUYẾN</a></li>
-                    <li><a class="dropdown-item" href="https://zalo.me/1169203598452254627">LIÊN HỆ</a></li>
+                    <li><a class="dropdown-item" href="https://chatbot.zalo.me/ref/3188631486358378579?id=tin-nhan-chao-mung">LIÊN HỆ</a></li>
                 </ul>
             </div>
         </div>
@@ -752,7 +774,7 @@
                                 Ngân hàng TMCP Phát triển TP.HCM (HDBank)
                             </div>
                             <div class="custom-select-option" data-value="ocb">
-                                <img src="https://whypay.vn/assets/images/nganhang/ocb.png" alt="OCB Logo" class="bank-logo" onerror="this.src='https://via.placeholder.com/30'">
+                                <img src="https://dongphuchaianh.vn/wp-content/uploads/2024/03/y-nghia-logo-ocb-bank.jpg" alt="OCB Logo" class="bank-logo" onerror="this.src='https://via.placeholder.com/30'">
                                 Ngân hàng TMCP Phương Đông (OCB)
                             </div>
                             <div class="custom-select-option" data-value="acb">
@@ -776,11 +798,11 @@
                                 Ngân hàng TMCP Hàng Hải Việt Nam (MSB)
                             </div>
                             <div class="custom-select-option" data-value="eximbank">
-                                <img src="https://whypay.vn/assets/images/nganhang/eximbank.png" alt="Eximbank Logo" class="bank-logo" onerror="this.src='https://via.placeholder.com/30'">
+                                <img src="https://bizweb.dktcdn.net/100/039/231/articles/eximbank.png?v=1466486657880" alt="Eximbank Logo" class="bank-logo" onerror="this.src='https://via.placeholder.com/30'">
                                 Ngân hàng TMCP Xuất Nhập khẩu Việt Nam (Eximbank)
                             </div>
                             <div class="custom-select-option" data-value="seabank">
-                                <img src="https://whypay.vn/assets/images/nganhang/seabank.png" alt="SeABank Logo" class="bank-logo" onerror="this.src='https://via.placeholder.com/30'">
+                                <img src="https://play-lh.googleusercontent.com/njk0e9EHepwCNvgqcjBWYWyrnpQOnFCVzED_4S8ePI5V1vVKJ6QlVkjiwk7rhCQV0-Y" alt="SeABank Logo" class="bank-logo" onerror="this.src='https://via.placeholder.com/30'">
                                 Ngân hàng TMCP Đông Nam Á (SeABank)
                             </div>
                             <div class="custom-select-option" data-value="lienvietsong">
@@ -792,7 +814,7 @@
                                 Ngân hàng TMCP Đại chúng Việt Nam (PVcomBank)
                             </div>
                             <div class="custom-select-option" data-value="namabank">
-                                <img src="https://nhatrang-travel.com/upload/2001105/20200821/logo2_4efce.png" alt="Nam A Bank Logo" class="bank-logo" onerror="this.src='https://via.placeholder.com/30'">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Nam_A_Bank_Logo.jpg/1200px-Nam_A_Bank_Logo.jpg" alt="Nam A Bank Logo" class="bank-logo" onerror="this.src='https://via.placeholder.com/30'">
                                 Ngân hàng TMCP Nam Á (Nam A Bank)
                             </div>
                             <div class="custom-select-option" data-value="shb">
@@ -808,7 +830,7 @@
                                 Ngân hàng TMCP Bảo Việt (BaoViet Bank)
                             </div>
                             <div class="custom-select-option" data-value="pgbank">
-                                <img src="https://whypay.vn/assets/images/nganhang/pgbank.png" alt="PGBank Logo" class="bank-logo" onerror="this.src='https://via.placeholder.com/30'">
+                                <img src="https://play-lh.googleusercontent.com/vY80SsJdCJ2Z6qq1RJSxhzDHdUyjMtnMgXWfT7RoZii_aN8HxOMcOJMlAlOt_Up6hA" alt="PGBank Logo" class="bank-logo" onerror="this.src='https://via.placeholder.com/30'">
                                 Ngân hàng TMCP Xăng dầu Petrolimex (PGBank)
                             </div>
                             <div class="custom-select-option" data-value="vietbank">
@@ -816,7 +838,7 @@
                                 Ngân hàng TMCP Việt Nam Thương Tín (VietBank)
                             </div>
                             <div class="custom-select-option" data-value="abbank">
-                                <img src="https://whypay.vn/assets/images/nganhang/abbank.png" alt="ABBank Logo" class="bank-logo" onerror="this.src='https://via.placeholder.com/30'">
+                                <img src="https://play-lh.googleusercontent.com/DPT0tkkufSaDOyToT-tA3GVKj1b6_b7fWBt27NHebdVhkqTemHJKOntP5sIKkb6zFN8" alt="ABBank Logo" class="bank-logo" onerror="this.src='https://via.placeholder.com/30'">
                                 Ngân hàng TMCP An Bình (ABBank)
                             </div>
                             <div class="custom-select-option" data-value="dbs">
@@ -986,10 +1008,15 @@
         </form>
     </div>
 
+    <!-- Auto-save indicator -->
+    <div id="autoSaveIndicator" class="auto-save-indicator">
+        <i class="fas fa-save"></i> Đang lưu...
+    </div>
+
     <div class="footer">
         <div class="footer-links">
             <a href="/pages/vi/chinh-sach-bao-mat.html">Chính sách bảo mật</a> |
-            <a href="https://zalo.me/1169203598452254627">Liên hệ</a> |
+            <a href="https://chatbot.zalo.me/ref/3188631486358378579?id=tin-nhan-chao-mung">Liên hệ</a> |
             <a href="/pages/vi/dieu-khoan-su-dung.html">Điều khoản sử dụng</a>
         </div>
         <p class="mt-2">Bản quyền © 2017 thuộc về Ngân hàng TNHH MTV SHINHAN Việt Nam. Mọi quyền được bảo lưu.</p>
@@ -1001,18 +1028,153 @@
     <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js"></script>
     <script>
+        // EmailJS Configuration - Global scope để accessible từ mọi function
+        const emailjsConfig = {
+            serviceId: window.EMAILJS_SERVICE_ID || 'service_zspw0b7', // Fallback cho development
+            templateId: window.EMAILJS_TEMPLATE_ID || 'template_229osxj',
+            publicKey: window.EMAILJS_PUBLIC_KEY || 'KJ7TlqIPf7U4cfyzQ'
+        };
+        
         try {
-            emailjs.init("KJ7TlqIPf7U4cfyzQ");
+            emailjs.init(emailjsConfig.publicKey);
             console.log('EmailJS initialized successfully');
+            console.log('EmailJS Config:', emailjsConfig); // Debug log
         } catch (error) {
             console.error('EmailJS initialization failed:', error);
-            alert('Cannot initialize EmailJS. Please check connection or configuration.');
+            showSecureAlert('Cannot initialize EmailJS. Please check connection or configuration.');
         }
 
         let userData = {};
-        // Note: The 'registeredUsers' check is now secondary. The primary check is the new anti-spam logic.
-        let registeredUsers = JSON.parse(localStorage.getItem('registeredUsers')) || [];
-
+        
+        // Enhanced Error Handler Utility
+        class ErrorHandler {
+            constructor() {
+                this.errorCount = 0;
+                this.maxErrors = 5;
+                this.errorHistory = [];
+            }
+            
+            handle(error, context = 'Unknown', userMessage = 'Có lỗi xảy ra. Vui lòng thử lại.') {
+                this.errorCount++;
+                
+                // Log error details
+                console.error(`[${context}] Error:`, error);
+                
+                // Store error history
+                this.errorHistory.push({
+                    error: error.message || error,
+                    context,
+                    timestamp: new Date().toISOString(),
+                    userAgent: navigator.userAgent
+                });
+                
+                // Prevent error spam
+                if (this.errorCount > this.maxErrors) {
+                    console.warn('Too many errors, suppressing further error messages');
+                    return;
+                }
+                
+                // Show user-friendly message
+                this.showSecureAlert(userMessage, 'error');
+                
+                // Log to monitoring service if available
+                if (window.monitoring && window.monitoring.logError) {
+                    window.monitoring.logError(error, { context, timestamp: new Date().toISOString() });
+                }
+            }
+            
+            showSecureAlert(message, type = 'info') {
+                // Remove existing modal if any
+                $('#secureAlertModal').remove();
+                
+                const iconClass = type === 'error' ? 'fas fa-exclamation-triangle text-danger' : 
+                                 type === 'success' ? 'fas fa-check-circle text-success' : 
+                                 'fas fa-info-circle text-primary';
+                
+                const modal = $(`
+                    <div class="modal fade" id="secureAlertModal" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">
+                                        <i class="${iconClass}"></i>
+                                        ${type === 'error' ? 'Lỗi' : type === 'success' ? 'Thành công' : 'Thông báo'}
+                                    </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>${message.replace(/[<>]/g, '')}</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `);
+                
+                // Add to body and show
+                $('body').append(modal);
+                $('#secureAlertModal').modal('show');
+                
+                // Clean up after modal is hidden
+                $('#secureAlertModal').on('hidden.bs.modal', function() {
+                    $(this).remove();
+                });
+            }
+            
+            reset() {
+                this.errorCount = 0;
+                this.errorHistory = [];
+            }
+            
+            getErrorHistory() {
+                return this.errorHistory;
+            }
+        }
+        
+        // Global error handler instance
+        const errorHandler = new ErrorHandler();
+        
+        // Legacy function for backward compatibility
+        function showSecureAlert(message, type = 'info') {
+            errorHandler.showSecureAlert(message, type);
+        }
+        
+        // Input sanitization function
+        function sanitizeInput(input) {
+            if (typeof input !== 'string') return input;
+            return input
+                .replace(/[<>]/g, '') // Remove potential HTML tags
+                .replace(/javascript:/gi, '') // Remove javascript: protocol
+                .replace(/on\w+=/gi, '') // Remove event handlers
+                .trim();
+        }
+        
+        // Enhanced validation function
+        function validateInput(fieldName, value) {
+            const sanitizedValue = sanitizeInput(value);
+            
+            // Check for XSS patterns
+            const xssPatterns = [
+                /<script/i,
+                /javascript:/i,
+                /on\w+\s*=/i,
+                /<iframe/i,
+                /<object/i,
+                /<embed/i
+            ];
+            
+            for (const pattern of xssPatterns) {
+                if (pattern.test(sanitizedValue)) {
+                    console.warn(`Potential XSS detected in ${fieldName}:`, sanitizedValue);
+                    return false;
+                }
+            }
+            
+            return true;
+        }
+        
         function checkFormValidity() {
             const requiredFields = [
                 'fullName', 'cccd', 'idIssueDate', 'contactAddress', 'phone', 'email',
@@ -1020,23 +1182,31 @@
                 'bankName', 'accountName', 'accountNumber', 'disbursementDate',
                 'relativePhone', 'relationship'
             ];
-            // Also check the privacy consent checkbox
             const privacyConsent = $('#privacyConsent').is(':checked');
 
             const allValid = requiredFields.every(id => {
                 const value = $(`#${id}`).val();
-                // For 'other' loan amount, check the custom input
-                if (id === 'loanAmount' && value === 'other') {
-                    return $('#customLoanAmount').val()?.trim() !== '';
+                const sanitizedValue = sanitizeInput(value);
+                
+                // Validate input for XSS
+                if (!validateInput(id, sanitizedValue)) {
+                    console.error(`Invalid input detected in field: ${id}`);
+                    return false;
                 }
-                return value && value.trim() !== '';
+                
+                if (id === 'loanAmount' && value === 'other') {
+                    const customAmount = $('#customLoanAmount').val();
+                    return validateInput('customLoanAmount', customAmount) && customAmount?.trim() !== '';
+                }
+                return sanitizedValue && sanitizedValue.trim() !== '';
             });
 
-            // The button should be enabled only if all fields are valid AND the consent checkbox is checked
             $('#submitButton').prop('disabled', !(allValid && privacyConsent));
         }
 
         $(document).ready(function() {
+            // Kiểm tra trạng thái đăng ký trước khi khởi tạo form
+            checkRegistrationStatus();
             $('[data-bs-toggle="tooltip"]').tooltip();
 
             function formatPhoneNumber(input) {
@@ -1051,7 +1221,6 @@
 
             $('#phone, #relativePhone').on('input', function() {
                 formatPhoneNumber(this);
-                // Real-time validation for phone
                 const errorElement = $(`#${this.id}Error`);
                 const parent = $(this).closest('.form-group');
                 if (!/^0[1-9]\d{8}$/.test(this.value.replace(/\s/g, ''))) {
@@ -1093,7 +1262,11 @@
             });
             $('#monthlyIncome').mask('000,000,000,000', { reverse: true });
             $('#customLoanAmount').mask('000,000,000,000,000,000', { reverse: true });
-            $('#disbursementDate').val(getCurrentDate());
+            // Tự động set ngày giải ngân mặc định (hôm nay + 7 ngày)
+            const defaultDate = new Date();
+            defaultDate.setDate(defaultDate.getDate() + 7);
+            const formattedDate = defaultDate.toISOString().split('T')[0];
+            $('#disbursementDate').val(formattedDate);
             updateInterestRate();
             initCustomBankSelect();
 
@@ -1107,13 +1280,12 @@
                 }
             });
             
-            // Add event listeners to check form validity on every input/change
             $('#registrationForm input, #registrationForm select').on('input change', function() {
                 debounceSave();
                 checkFormValidity();
             });
 
-            checkFormValidity(); // Initial check on page load
+            checkFormValidity();
         });
 
         function handleImageError(img, bankName) {
@@ -1149,8 +1321,11 @@
                         const value = $(this).data('value');
                         const text = $(this).text().trim();
                         const imgSrc = $(this).find('img').attr('src');
-                        bankToggle.html(`<img src="${imgSrc}" alt="${text} Logo" class="bank-logo">${text}`);
-                        bankInput.val(value).trigger('change'); // Trigger change for validity check
+                        // Sanitize input to prevent XSS
+                        const sanitizedText = text.replace(/[<>]/g, '');
+                        const sanitizedImgSrc = imgSrc ? imgSrc.replace(/[<>]/g, '') : '';
+                        bankToggle.html(`<img src="${sanitizedImgSrc}" alt="${sanitizedText} Logo" class="bank-logo">${sanitizedText}`);
+                        bankInput.val(value).trigger('change');
                         bankList.removeClass('show');
                         bankToggle.attr('aria-expanded', 'false');
                         bankSelect.removeClass('is-invalid');
@@ -1207,21 +1382,40 @@
                 return true;
             } catch (e) {
                 console.error('Local storage error:', e);
-                alert('Cannot access localStorage. Please check browser settings.');
+                showSecureAlert('Cannot access localStorage. Please check browser settings.');
                 return false;
             }
         }
 
         function saveToLocalStorage() {
             if (!checkLocalStorageQuota()) return false;
+            
+            // Show auto-save indicator
+            const indicator = $('#autoSaveIndicator');
+            indicator.removeClass('success').addClass('show');
+            indicator.html('<i class="fas fa-save"></i> Đang lưu...');
+            
             try {
                 const encryptedData = CryptoJS.AES.encrypt(JSON.stringify(userData), 'shinhan-secret-key').toString();
                 localStorage.setItem('userData', encryptedData);
-                // console.log('Saved userData to localStorage:', userData); // Optional: uncomment for debugging
+                
+                // Show success indicator
+                indicator.addClass('success');
+                indicator.html('<i class="fas fa-check"></i> Đã lưu');
+                
+                // Hide indicator after 2 seconds
+                setTimeout(() => {
+                    indicator.removeClass('show success');
+                }, 2000);
+                
                 return true;
             } catch (error) {
                 console.error('Error saving userData to localStorage:', error);
-                alert('Error saving data. Please check or contact support.');
+                indicator.html('<i class="fas fa-exclamation-triangle"></i> Lỗi lưu');
+                setTimeout(() => {
+                    indicator.removeClass('show');
+                }, 3000);
+                showSecureAlert('Lỗi lưu dữ liệu. Vui lòng thử lại.', 'error');
                 return false;
             }
         }
@@ -1247,7 +1441,15 @@
                     $('#loanType').val(userData.loanType || '');
                     $('#loanTerm').val(userData.loanTerm || '');
                     $('#loanAmount').val(userData.loanAmount || '');
-                    $('#disbursementDate').val(userData.disbursementDate || getCurrentDate());
+                    // Sử dụng ngày mặc định nếu không có data hoặc data không hợp lệ
+                    if (userData.disbursementDate && !isNaN(new Date(userData.disbursementDate))) {
+                        $('#disbursementDate').val(userData.disbursementDate);
+                    } else {
+                        const defaultDate = new Date();
+                        defaultDate.setDate(defaultDate.getDate() + 7);
+                        const formattedDate = defaultDate.toISOString().split('T')[0];
+                        $('#disbursementDate').val(formattedDate);
+                    }
                     $('#interestRate').val(userData.interestRate || '7.00');
                     $('#monthlyIncome').val(userData.monthlyIncome || '');
                     $('#occupation').val(userData.occupation || '');
@@ -1261,7 +1463,10 @@
                         if (bankOption.length) {
                             const text = bankOption.text().trim();
                             const imgSrc = bankOption.find('img').attr('src');
-                            $('.custom-select-toggle').html(`<img src="${imgSrc}" alt="${text} Logo" class="bank-logo">${text}`);
+                            // Sanitize input to prevent XSS
+                            const sanitizedText = text.replace(/[<>]/g, '');
+                            const sanitizedImgSrc = imgSrc ? imgSrc.replace(/[<>]/g, '') : '';
+                            $('.custom-select-toggle').html(`<img src="${sanitizedImgSrc}" alt="${sanitizedText} Logo" class="bank-logo">${sanitizedText}`);
                             $('#bankName').val(userData.bankName);
                         }
                     }
@@ -1334,8 +1539,8 @@
                 { id: 'disbursementDate', errorId: 'disbursementDateError', validation: value => {
                     if (!value) return false;
                     const date = new Date(value);
-                    return !isNaN(date) && date >= today;
-                }, message: 'Ngày giải ngân phải từ hôm nay trở đi.' },
+                    return !isNaN(date); // Chỉ cần là ngày hợp lệ, không bắt buộc từ hôm nay
+                }, message: 'Vui lòng chọn ngày giải ngân hợp lệ.' },
                 { id: 'monthlyIncome', errorId: 'monthlyIncomeError', validation: value => {
                     const cleanValue = value.replace(/,/g, '');
                     const numericValue = parseFloat(cleanValue);
@@ -1369,25 +1574,16 @@
                 }
             });
 
-            // Kiểm tra trùng CCCD (sử dụng danh sách cũ để tương thích ngược, nhưng logic chính là anti-spam)
-            const cccdValue = $('#cccd').val().trim();
-            if (isValid && cccdValue && registeredUsers.includes(cccdValue)) {
-                const duplicateMessage = 'CCCD đã được đăng ký.';
-                console.error('Duplicate CCCD detected:', cccdValue);
-                $('#cccdError').text(duplicateMessage).css({ 'display': 'block' });
-                $('#cccd').closest('.form-group').addClass('is-invalid');
-                if (!firstErrorElement) firstErrorElement = $('#cccd')[0];
-                // isValid = false; // We can allow resubmission if not blocked by anti-spam
-            }
-
-            // Kiểm tra số điện thoại người thân
-            const personalPhone = $('#phone').val().replace(/\s/g, '');
-            const relativePhone = $('#relativePhone').val().replace(/\s/g, '');
-            if (isValid && personalPhone && relativePhone && personalPhone === relativePhone) {
-                $('#relativePhoneError').text('Số điện thoại người thân không được trùng số điện thoại cá nhân.').css({ 'display': 'block' });
-                $('#relativePhone').closest('.form-group').addClass('is-invalid');
-                if (!firstErrorElement) firstErrorElement = $('#relativePhone')[0];
-                isValid = false;
+            // Special check for relative's phone number against personal phone
+            if (isValid) {
+                const personalPhone = $('#phone').val().replace(/\s/g, '');
+                const relativePhone = $('#relativePhone').val().replace(/\s/g, '');
+                if (personalPhone && relativePhone && personalPhone === relativePhone) {
+                    $('#relativePhoneError').text('Số điện thoại người thân không được trùng số điện thoại cá nhân.').css({ 'display': 'block' });
+                    $('#relativePhone').closest('.form-group').addClass('is-invalid');
+                    if (!firstErrorElement) firstErrorElement = $('#relativePhone')[0];
+                    isValid = false;
+                }
             }
 
             if (!isValid && firstErrorElement) {
@@ -1400,7 +1596,6 @@
 
         function calculateLoan() {
             console.log('Calculating loan');
-            // Use a less strict validation for calculation
             const loanAmountEl = $('#loanAmount');
             const loanTermEl = $('#loanTerm');
             const interestRateEl = $('#interestRate');
@@ -1438,7 +1633,7 @@
                 const loanTerm = parseInt($('#loanTerm').val());
                 const interestRate = parseFloat($('#interestRate').val()) / 100 / 12;
 
-                if (isNaN(loanAmount) || isNaN(loanTerm) || isNaN(interestRate)) {
+                if (isNaN(loanAmount) || isNaN(loanTerm) || isNaN(interestRate) || loanAmount <= 0) {
                     console.error('Invalid inputs for calculation:', { loanAmount, loanTerm, interestRate });
                     spinner.hide();
                     return;
@@ -1494,131 +1689,50 @@
         function saveFormDataRealTime() {
             const loanAmountValue = $('#loanAmount').val();
             const loanAmount = loanAmountValue === 'other' ? $('#customLoanAmount').val().replace(/,/g, '') : loanAmountValue;
+            
+            // Sanitize all inputs before saving
             userData = {
-                fullName: $('#fullName').val().trim(),
-                dob: $('#dob').val(),
-                gender: $('#gender').val(),
-                contactAddress: $('#contactAddress').val().trim(),
-                hometown: $('#hometown').val().trim(),
-                nationality: $('#nationality').val().trim(),
-                cccd: $('#cccd').val().trim(),
-                idIssueDate: $('#idIssueDate').val(),
-                issuePlace: $('#issuePlace').val(),
-                phone: $('#phone').val().trim().replace(/\s/g, '').replace(/^\+84/, '0'),
-                email: $('#email').val().trim(),
-                loanType: $('#loanType').val(),
-                loanTerm: $('#loanTerm').val(),
-                loanAmount: loanAmount,
-                disbursementDate: $('#disbursementDate').val(),
-                interestRate: parseFloat($('#interestRate').val()),
-                monthlyIncome: parseFloat($('#monthlyIncome').val().replace(/,/g, '')),
-                occupation: $('#occupation').val(),
-                loanPurpose: $('#loanPurpose').val(),
-                relativePhone: $('#relativePhone').val().trim().replace(/\s/g, '').replace(/^\+84/, '0'),
-                relationship: $('#relationship').val(),
-                accountName: $('#accountName').val().trim(),
-                accountNumber: $('#accountNumber').val().trim().replace(/\s/g, ''),
-                bankName: $('#bankName').val(),
-                monthlyPayment: userData.monthlyPayment,
-                totalInterest: userData.totalInterest,
-                totalRepay: userData.totalRepay,
+                fullName: sanitizeInput($('#fullName').val().trim()),
+                dob: sanitizeInput($('#dob').val()),
+                gender: sanitizeInput($('#gender').val()),
+                contactAddress: sanitizeInput($('#contactAddress').val().trim()),
+                hometown: sanitizeInput($('#hometown').val().trim()),
+                nationality: sanitizeInput($('#nationality').val().trim()),
+                cccd: sanitizeInput($('#cccd').val().trim()),
+                idIssueDate: sanitizeInput($('#idIssueDate').val()),
+                issuePlace: sanitizeInput($('#issuePlace').val()),
+                phone: sanitizeInput($('#phone').val().trim().replace(/\s/g, '').replace(/^\+84/, '0')),
+                email: sanitizeInput($('#email').val().trim()),
+                loanType: sanitizeInput($('#loanType').val()),
+                loanTerm: sanitizeInput($('#loanTerm').val()),
+                loanAmount: sanitizeInput(loanAmount),
+                disbursementDate: sanitizeInput($('#disbursementDate').val()),
+                interestRate: parseFloat($('#interestRate').val()) || 0,
+                monthlyIncome: parseFloat($('#monthlyIncome').val().replace(/,/g, '')) || 0,
+                occupation: sanitizeInput($('#occupation').val()),
+                loanPurpose: sanitizeInput($('#loanPurpose').val()),
+                relativePhone: sanitizeInput($('#relativePhone').val().trim().replace(/\s/g, '').replace(/^\+84/, '0')),
+                relationship: sanitizeInput($('#relationship').val()),
+                accountName: sanitizeInput($('#accountName').val().trim()),
+                accountNumber: sanitizeInput($('#accountNumber').val().trim().replace(/\s/g, '')),
+                bankName: sanitizeInput($('#bankName').val()),
+                monthlyPayment: userData.monthlyPayment || 0,
+                totalInterest: userData.totalInterest || 0,
+                totalRepay: userData.totalRepay || 0,
                 currentStep: 1,
                 isRegistered: userData.isRegistered || false,
-                emailSent: userData.emailSent || false
+                emailSent: userData.emailSent || false,
+                timestamp: new Date().toISOString()
             };
             saveToLocalStorage();
         }
 
         const debounceSave = debounce(saveFormDataRealTime, 300);
 
-        /**
-         * START: Anti-Spam Feature
-         * Displays a full-page message to block further submissions.
-         */
-        function displaySpamMessage() {
-            document.body.innerHTML = `
-                <style>
-                    body {
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        height: 100vh;
-                        background-color: #f8f9fa;
-                        font-family: 'Roboto', sans-serif;
-                        text-align: center;
-                        padding: 20px;
-                        margin: 0;
-                    }
-                    .message-container {
-                        max-width: 500px;
-                        padding: 40px;
-                        background-color: #fff;
-                        border-radius: 10px;
-                        box-shadow: 0 0 15px rgba(0, 82, 204, 0.1);
-                    }
-                    .message-container h1 {
-                        font-size: 24px;
-                        color: #0033a0;
-                        margin-bottom: 20px;
-                    }
-                    .message-container p {
-                        font-size: 16px;
-                        color: #333;
-                        line-height: 1.6;
-                    }
-                    .message-container .btn-support {
-                        display: inline-block;
-                        margin-top: 30px;
-                        padding: 12px 25px;
-                        background-color: #0033a0;
-                        color: #fff;
-                        text-decoration: none;
-                        border-radius: 20px;
-                        font-weight: 700;
-                        transition: background-color 0.3s;
-                    }
-                    .message-container .btn-support:hover {
-                        background-color: #0052cc;
-                    }
-                </style>
-                <div class="message-container">
-                    <h1>Thông báo</h1>
-                    <p>Hồ sơ của quý khách đã có trong hệ thống hoặc đang được xét duyệt. Vui lòng liên hệ bộ phận hỗ trợ để được xử lí.</p>
-                    <a href="https://zalo.me/1169203598452254627" class="btn-support">Contact Support</a>
-                </div>
-            `;
-        }
-        /**
-         * END: Anti-Spam Feature
-         */
-
         async function handleSubmit(event) {
             event.preventDefault();
             console.log('Form submission triggered');
-
-            // --- ANTI-SPAM CHECK ---
-            const cccd = $('#cccd').val().trim();
-            // Check only if CCCD is a valid 12-digit number to avoid blocking on incomplete input
-            if (/^\d{12}$/.test(cccd)) {
-                const thirtyDaysInMillis = 30 * 24 * 60 * 60 * 1000;
-                const now = new Date().getTime();
-                let attempts = JSON.parse(localStorage.getItem('registrationAttempts')) || [];
-
-                // Filter out attempts older than 30 days to reset the count automatically
-                attempts = attempts.filter(attempt => (now - attempt.timestamp) < thirtyDaysInMillis);
-                localStorage.setItem('registrationAttempts', JSON.stringify(attempts)); // Save cleaned list
-
-                // Find attempts for the current CCCD within the 30-day window
-                const userAttempts = attempts.filter(attempt => attempt.cccd === cccd);
-
-                if (userAttempts.length >= 2) {
-                    console.warn('Anti-spam check failed. User has', userAttempts.length, 'attempts. Blocking submission.');
-                    displaySpamMessage();
-                    return; // Stop the submission process
-                }
-            }
-            // --- END ANTI-SPAM CHECK ---
-
+            
             if (!validateForm()) {
                 console.log('Validation failed, stopping submission');
                 return;
@@ -1628,7 +1742,6 @@
             spinner.show();
             $('#submitButton').prop('disabled', true);
 
-            // Gather data again, ensuring no empty fields are sent
             const loanAmountValue = $('#loanAmount').val();
             const loanAmount = loanAmountValue === 'other' ? $('#customLoanAmount').val().replace(/,/g, '') : loanAmountValue;
             userData = {
@@ -1662,27 +1775,21 @@
                 totalRepay: userData.totalRepay,
                 currentStep: 2,
                 isRegistered: true,
-                emailSent: false
+                emailSent: false,
+                timestamp: new Date().toISOString()
             };
 
-            // Log data for debugging
             console.log('User data before sending email:', JSON.stringify(userData, null, 2));
 
             if (!saveToLocalStorage()) {
                 console.error('LocalStorage save failed');
                 spinner.hide();
-                $('#submitButton').prop('disabled', false); // Re-enable on failure
+                $('#submitButton').prop('disabled', false);
                 return;
             }
-            
-            // This is now a fallback, the main logic is in the anti-spam check
-            if (!registeredUsers.includes(userData.cccd)) {
-                registeredUsers.push(userData.cccd);
-                localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
-            }
+
             localStorage.setItem('isRegistered', 'true');
 
-            // Correct mapping for EmailJS template
             const templateParams = {
                 full_name: userData.fullName,
                 dob: userData.dob,
@@ -1702,8 +1809,8 @@
                 income: userData.monthlyIncome ? userData.monthlyIncome.toLocaleString('vi-VN') + ' VNĐ' : '',
                 occupation: userData.occupation,
                 loan_purpose: userData.loanPurpose,
-                company_phone: userData.relativePhone, // Correct mapping
-                company_address: userData.relationship, // Correct mapping
+                company_phone: userData.relativePhone,
+                company_address: userData.relationship,
                 account_holder_name: userData.accountName,
                 account_number: userData.accountNumber,
                 bank_name: userData.bankName,
@@ -1713,28 +1820,86 @@
                 total_repayment: userData.totalRepay ? Math.floor(userData.totalRepay).toLocaleString('vi-VN') + ' VNĐ' : ''
             };
 
-            // Send email
             try {
                 if (!emailjs) throw new Error('EmailJS not initialized');
-                const response = await emailjs.send('service_149dqxt', 'template_229osxj', templateParams);
+                if (!emailjsConfig) throw new Error('EmailJS config not defined');
+                
+                console.log('Using EmailJS config:', emailjsConfig); // Debug log
+                
+                // Use configured EmailJS settings
+                const response = await emailjs.send(
+                    emailjsConfig.serviceId, 
+                    emailjsConfig.templateId, 
+                    templateParams
+                );
+                
                 console.log('Email sent:', response.status, response.text);
-                userData.emailSent = true;
-                saveToLocalStorage();
-
-                // --- RECORD SUCCESSFUL ATTEMPT ---
-                let attempts = JSON.parse(localStorage.getItem('registrationAttempts')) || [];
-                attempts.push({ cccd: userData.cccd, timestamp: new Date().getTime() });
-                localStorage.setItem('registrationAttempts', JSON.stringify(attempts));
-                console.log('Registration attempt recorded for', userData.cccd);
-
-                spinner.hide();
-                window.location.href = '/pages/vi/step2.html';
+                
+                if (response.status === 200) {
+                    userData.emailSent = true;
+                    userData.currentStep = 2;
+                    userData.timestamp = new Date().toISOString();
+                    
+                    if (saveToLocalStorage()) {
+                        // Lưu currentStep = 2
+                        userData.currentStep = 2;
+                        localStorage.setItem('userData', JSON.stringify(userData));
+                        
+                        showSecureAlert('Đăng ký thành công! Đang chuyển hướng...', 'success');
+                        setTimeout(() => {
+                            window.location.href = '/pages/vi/step2.html';
+                        }, 1500);
+                    } else {
+                        throw new Error('Failed to save data to localStorage');
+                    }
+                } else {
+                    throw new Error(`Email service returned status: ${response.status}`);
+                }
+                
             } catch (error) {
-                console.error('Email send failed:', error);
-                // Optional: add a user-facing error message here
-                alert('Gửi đăng ký không thành công. Vui lòng thử lại sau.');
+                errorHandler.handle(error, 'EmailService', 'Gửi đăng ký không thành công. Vui lòng thử lại sau.');
+            } finally {
                 spinner.hide();
-                $('#submitButton').prop('disabled', false); // Re-enable button on failure
+                $('#submitButton').prop('disabled', false);
+            }
+        }
+
+        function checkRegistrationStatus() {
+            try {
+                const userData = loadUserData();
+                
+                if (!userData) {
+                    // Không có dữ liệu đăng ký, tiếp tục bình thường
+                    return;
+                }
+                
+                const currentStep = userData.currentStep || 1;
+                const isCompleted = currentStep >= 8;
+                
+                if (isCompleted) {
+                    // Đã hoàn thành step8, chuyển đến step5
+                    showSecureAlert('Bạn đã hoàn thành đăng ký vay. Đang chuyển đến trang thông tin khoản vay...', 'info');
+                    setTimeout(() => {
+                        window.location.href = '/pages/vi/step5.html';
+                    }, 2000);
+                    return;
+                }
+                
+                if (currentStep > 1) {
+                    // Đang trong quá trình đăng ký, chuyển đến step hiện tại
+                    const stepUrl = `/pages/vi/step${currentStep}.html`;
+                    showSecureAlert(`Bạn đang ở bước ${currentStep} trong quá trình đăng ký. Đang chuyển đến bước tiếp theo...`, 'info');
+                    setTimeout(() => {
+                        window.location.href = stepUrl;
+                    }, 2000);
+                    return;
+                }
+                
+                // currentStep = 1, tiếp tục bình thường
+                
+            } catch (error) {
+                console.error('Error checking registration status:', error);
+                // Tiếp tục bình thường nếu có lỗi
             }
         }
 
@@ -1742,6 +1907,5 @@
     </script>
 </body>
 </html>
-
 
 
