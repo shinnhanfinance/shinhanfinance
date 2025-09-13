@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -30,10 +29,11 @@
             margin: 0;
             padding: 0;
             overflow-x: hidden;
-            overflow-y: hidden;
+            overflow-y: auto; /* Cho phép cuộn dọc */
             display: flex;
             flex-direction: column;
-            height: 100vh;
+            min-height: 100vh; /* Thay vì height cố định */
+            min-height: 100dvh; /* Dynamic viewport height cho mobile */
             font-size: 16px;
         }
         .hidden { display: none !important; }
@@ -342,6 +342,13 @@
             max-width: 450px;
             margin: 0 auto 20px;
         }
+        
+        /* Đảm bảo button group trong confirm section hiển thị tốt */
+        .confirm-box .button-group {
+            width: 100%;
+            max-width: 100%;
+            margin: 10px 0;
+        }
         .btn {
             background: white;
             color: black;
@@ -543,6 +550,8 @@
             flex-direction: column;
             align-items: center;
             padding: 15px;
+            width: 100%;
+            max-width: 100%;
         }
         .confirm-previews {
             display: flex;
@@ -550,6 +559,8 @@
             gap: 15px;
             margin: 20px 0;
             width: 95%;
+            max-height: 60vh; /* Giới hạn chiều cao tổng thể */
+            overflow-y: auto; /* Cho phép cuộn nếu cần */
         }
         .confirm-previews img {
             width: 100%;
@@ -679,6 +690,8 @@
             }
             .confirm-previews img {
                 max-width: 100%;
+                max-height: 30vh; /* Giới hạn chiều cao ảnh trên mobile */
+                object-fit: contain; /* Giữ tỷ lệ ảnh */
             }
             .camera-frame {
                 width: 280px;
@@ -695,6 +708,24 @@
             }
             .confirm-box .button-group .btn {
                 margin-bottom: 10px;
+            }
+            
+            /* Đảm bảo nút xác nhận luôn hiển thị và dễ tiếp cận */
+            #confirmFinalBtn {
+                position: sticky;
+                bottom: 20px;
+                z-index: 100;
+                background: var(--primary-color) !important;
+                color: white !important;
+                border: none !important;
+                padding: 15px 30px !important;
+                font-size: 18px !important;
+                font-weight: 600 !important;
+                border-radius: 12px !important;
+                box-shadow: 0 4px 15px rgba(0, 168, 89, 0.3) !important;
+                min-height: 56px !important;
+                width: 100% !important;
+                touch-action: manipulation !important;
             }
             .corner {
                 width: 15px;
@@ -713,10 +744,7 @@
         section {
             transition: opacity 0.5s ease;
         }
-        .hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
+        /* .hidden class đã được định nghĩa ở đầu file với display: none !important; */
         .beautiful-layout { 
             display: flex;
             flex-direction: column;
@@ -725,7 +753,8 @@
             text-align: center;
             padding: 15px;
             flex: 1;
-            overflow: hidden;
+            overflow-y: auto; /* Cho phép cuộn dọc */
+            overflow-x: hidden;
         }
         .title-large {
             text-align: center;
@@ -1526,6 +1555,14 @@
                     this.elements.backPreview.onclick = null;
                     this.elements.backPreview.addEventListener('click', () => this.showFullScreen(this.state.backImageDataUrl));
                 }
+                
+                // Cuộn đến phần xác nhận để đảm bảo nút hiển thị
+                setTimeout(() => {
+                    this.elements.confirmSection.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start' 
+                    });
+                }, 100);
             },
             showFullScreen(imageDataUrl) {
                 const modal = document.createElement('div');
@@ -1550,7 +1587,24 @@
                     this.showError("Không thể lưu dữ liệu. Vui lòng thử lại.", true);
                 }
             },
+            loadUserData() {
+                try {
+                    const userDataStr = localStorage.getItem('userData');
+                    return userDataStr ? JSON.parse(userDataStr) : null;
+                } catch (error) {
+                    console.error('Error loading user data:', error);
+                    return null;
+                }
+            },
             submitFinalData() {
+                // Lưu currentStep = 3 trước khi chuyển đến step3
+                const userData = this.loadUserData();
+                if (userData) {
+                    userData.currentStep = 3;
+                    userData.timestamp = new Date().toISOString();
+                    localStorage.setItem('userData', JSON.stringify(userData));
+                }
+                
                 this.saveToLocalStorage();
                 window.location.href = this.config.NEXT_STEP_URL;
             },
@@ -1599,4 +1653,3 @@
     </script>
 </body>
 </html>
-
